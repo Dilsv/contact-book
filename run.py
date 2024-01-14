@@ -14,10 +14,34 @@ SHEET = GSPREAD_CLIENT.open('Contact-book')
 
 contactdetails = SHEET.worksheet('contactdetails')
 
-data = contactdetails.get_all_values()
 
-print(data)
+def retrieve_records():
+    """
+    Function to retrieve all records found
+    in the models list spreadhseet.
+    """
+    return contactdetails.get_all_records()
 
+
+def retrieve_all_contact():
+    """
+    Function to retrieve full list of models
+    """
+    all_contacts = retrieve_records()
+    print("\nNow retrieving all of your contacts...\n")
+    for contact in all_contacts:
+        print_record(contact)
+
+
+def print_record(record):
+    """
+    Function to loop through all records passed
+    as a parameter and print the details in a
+    list of key: values.
+    """
+    for key, value in record.items():
+        print(f"{key}: {value}")
+    print("\n")
 
 def show_menu():
     """
