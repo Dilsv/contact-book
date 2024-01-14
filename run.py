@@ -33,7 +33,7 @@ def retrieve_records():
 
 def retrieve_all_contact():
     """
-    Function to retrieve full list of models
+    Function to retrieve full list of contact
     """
     all_contacts = retrieve_records()
     print("\nNow retrieving all of your contacts...\n")
@@ -51,6 +51,7 @@ def print_record(record):
     for key, value in record.items():
         print(f"{key}: {value}")
     print("\n")
+
 
 def another_task():
     """
@@ -71,6 +72,52 @@ def another_task():
         else:
             print("Program shutting down...\n")
             raise SystemExit
+
+
+def get_valid_input(prompt, validation_function):
+    """
+    Helper function to get valid input based on the provided validation function.
+    """
+    while True:
+        user_input = pyip.inputStr(prompt)
+        if validation_function(user_input):
+            break
+        else:
+            print("Enter valid input.")
+
+    return user_input
+
+def add_new_contact():
+    """
+    Function to allow users to enter a new model's information.
+    If the user tries to enter invalid characters, they will be alerted.
+    """
+    name = get_valid_input('*First Name: ', str.isalpha)
+
+    print("Please enter your number")
+    number = pyip.inputInt('*Mobile Number: ')
+
+    email = get_valid_input('*Email: ', pyip.inputEmail)
+
+    address = get_valid_input('*Address: ', lambda x: len(x) > 0)  
+    
+    age = pyip.inputInt('*Age: ')
+
+    new_contact_info = [name, number, email, address, age]
+
+    print(f'The data you have entered is: <{new_contact_info}>')
+
+    print("\nWould you like to save?\n")
+    save = pyip.inputMenu(['Yes', 'No'], numbered=True)
+
+    if save == 'Yes':
+        contactdetails.append_row(new_contact_info)
+        print("\nWorksheet updated successfully")
+    else:
+        print("Worksheet not updated")
+
+    return another_task()
+
 
 
 def show_menu():
