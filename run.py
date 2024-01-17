@@ -12,8 +12,7 @@ CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open('Contact-book')
-
-contactdetails = SHEET.worksheet('contactdetails')
+contacts = SHEET.worksheet('contacts')
 
 def user_response(message, min_value, max_value):
     """
@@ -28,7 +27,7 @@ def retrieve_records():
     Function to retrieve all records found
     in the models list spreadhseet.
     """
-    return contactdetails.get_all_records()
+    return contacts.get_all_records()
 
 
 def retrieve_all_contact():
@@ -111,12 +110,197 @@ def add_new_contact():
     save = pyip.inputMenu(['Yes', 'No'], numbered=True)
 
     if save == 'Yes':
-        contactdetails.append_row(new_contact_info)
+        contacts.append_row(new_contact_info)
         print("\nWorksheet updated successfully")
     else:
         print("Worksheet not updated")
 
     return another_task()
+
+
+def search_display(choice, search_by):
+    """
+    Function to display search results.
+    Called in the search function and used
+    in the edit_search function.
+    """
+    contacts = SHEET.worksheet("contacts")
+    header = contacts.row_values(1)
+    index = header.index(choice)
+    index = index + 1
+    # incrementing list index by 1 to get the correct column number selected
+    column = contacts.col_values(index)
+    rows_ids = []
+    rows_data = []
+    for i in range(len(column)):
+        if column[i] == search_by:
+            row_number = i + 1
+            # incrementing list index by 1 to get
+            # the correct row number selected
+            rows_ids.append(row_number)
+        else:
+            pass
+    if len(rows_ids) > 0:
+        print("Number of Contacts found: ", len(rows_ids))
+        for row_number in rows_ids:
+            row = contacts.row_values(row_number)
+            rows_data.append(row)
+            print(row_number, row)
+    else:
+        print("\nNo Contacts found")
+        another_task()
+    return rows_ids
+
+
+def search(choice):
+    """
+    Function to display search choices to user.
+    """
+    search_by = pyip.inputStr(f'\nEnter {choice}: ').capitalize()
+    print("\nLoading Contacts...\n")
+    rows_ids = search_display(choice, search_by)
+    return rows_ids
+
+
+def search_contacts():
+    """
+    Allows the user to search for specific models),
+    either by first name, last name, height, hair colour or gender.
+    The search function is then called to display the results
+    to the user.
+    """
+    print("\nHow would you like to search?\n\
+    \n1. By Name\n\
+2. By Mobile Number\n\
+3. By Email\n\
+4. By Address\n\
+5. By Age\n")
+    while True:
+        user_input = user_response(
+            "\nPlease enter a number from the above options: ", 1, 5
+            )
+        if user_input == 1:
+            search('Name')
+        elif user_input == 2:
+            search('Mobile Number')
+        elif user_input == 3:
+            search('Email')
+        elif user_input == 4:
+            search('Address')
+        elif user_input == 5:
+            search('Age')
+        another_task()
+        return False
+
+
+def get_updated_value(user_input):
+    """
+    Helper function to get the updated value based on user input.
+    """
+    if user_input == 1:
+        return pyip.inputStr('\n*New Name: ')
+    elif user_input == 2:
+        return pyip.inputStr('\n*New Last Name: ')
+    elif user_input == 3:
+        return int(pyip.inputInt('\n*New Mobile Number: '))
+    elif user_input == 4:
+        return pyip.inputEmail('\n*New Email: ')
+    elif user_input == 5:
+        return pyip.inputStr('\n*New Address: ')
+    elif user_input == 6:
+        return int(pyip.inputInt('\n*New Age: '))
+    else:
+        return None  # Handle other cases if necessary
+
+def edit_search():
+    """
+    Function to allow the user to search contacts by Name.
+    """
+    contacts = SHEET.worksheet("contacts")
+    
+    print("\nHow would you like to search?\n\
+    \n1. By Name\n")
+
+    while True:
+        user_input = user_response("\nPlease enter a number from the above options: ", 1, 1)
+        if user_input == 1:
+            name_to_search = pyip.inputStr("\nEnter the Name to search: ")
+            rows_ids = search_by_name(name_to_search)
+            break
+        else:
+            pass
+
+    while True:
+        contact_row = int(pyip.inputInt('\nPlease enter the number that is \
+next to the contact you would like to select: '))
+        if contact_row in rows_ids:
+            break
+        else:
+            pass
+
+    print("\
+    \n1. Name\n\
+2. Last Name\n\
+3. Mobile Number\n\
+4. Email\n\
+5. Address\n\
+6. Age\n")
+    user_input = user_response("\nWhich value would you like to change: ", 1, 6)
+    updated_value = get_updated_value(user_input)
+    
+    updated_contact_info = contacts.row_values(contact_row)
+    index = user_input - 1
+    updated_contact_info[index] = updated_value
+
+    print(f'The updated contact will be: <{updated_contact_info}>')
+    print("\nWould you like to save?\n")
+    save = pyip.inputMenu(['Yes', 'No'], numbered=True)
+
+    if save == 'Yes':
+        update_contact(contact_row, user_input, updated_value)
+        print("\nWorksheet updated successfully")
+    else:
+        print("\nWorksheet not updated")
+
+    another_task()
+
+
+
+def search_by_name(name):
+    """
+    Helper function to search for contacts by Name.
+    """
+    contacts = SHEET.worksheet("contacts")
+    header = contacts.row_values(1)
+    index = header.index("Name") + 1
+    
+    column = contacts.col_values(index)
+    rows_ids = []
+
+    for i in range(len(column)):
+        if column[i] == name:
+            row_number = i + 1
+            rows_ids.append(row_number)
+
+    if len(rows_ids) > 0:
+        print("Number of Contacts found: ", len(rows_ids))
+        for row_number in rows_ids:
+            row = contacts.row_values(row_number)
+            print(row_number, row)
+    else:
+        print("\nNo Contacts found")
+        another_task()
+
+    return rows_ids
+
+
+
+def update_contact(contact_row, contact_column, updated_value):
+    """
+    Function to update the google spreadsheet
+    when the user updates a model's information
+    """
+    contacts.update_cell(contact_row, contact_column, updated_value)
 
 
 
@@ -149,9 +333,9 @@ def menu():
         elif choice == '2':
             add_new_contact()
         elif choice == '3':
-            search_contact()
+            search_contacts()
         elif choice == '4':
-            edit_contact()
+            edit_search()
         else:
             print(f'Not a valid choice: <{choice}>,try again')
 
