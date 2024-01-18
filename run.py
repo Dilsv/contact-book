@@ -86,23 +86,22 @@ def get_valid_input(prompt, validation_function):
 
     return user_input
 
+
 def add_new_contact():
     """
     Function to allow users to enter a new model's information.
     If the user tries to enter invalid characters, they will be alerted.
     """
-    name = get_valid_input('*First Name: ', str.isalpha)
+    first_name = pyip.inputStr('*First Name: ')
 
     print("Please enter your number")
     number = pyip.inputInt('*Mobile Number: ')
 
-    email = get_valid_input('*Email: ', pyip.inputEmail)
-
-    address = get_valid_input('*Address: ', lambda x: len(x) > 0)  
+    country = pyip.inputStr('*Country: ')
     
     age = pyip.inputInt('*Age: ')
 
-    new_contact_info = [name, number, email, address, age]
+    new_contact_info = [first_name, number, country, age]
 
     print(f'The data you have entered is: <{new_contact_info}>')
 
@@ -170,24 +169,21 @@ def search_contacts():
     to the user.
     """
     print("\nHow would you like to search?\n\
-    \n1. By Name\n\
+    \n1. By First Name\n\
 2. By Mobile Number\n\
-3. By Email\n\
-4. By Address\n\
-5. By Age\n")
+3. By Country\n\
+4. By Age\n")
     while True:
         user_input = user_response(
-            "\nPlease enter a number from the above options: ", 1, 5
+            "\nPlease enter a number from the above options: ", 1, 4
             )
         if user_input == 1:
-            search('Name')
+            search('First Name')
         elif user_input == 2:
             search('Mobile Number')
         elif user_input == 3:
-            search('Email')
+            search('Country')
         elif user_input == 4:
-            search('Address')
-        elif user_input == 5:
             search('Age')
         another_task()
         return False
@@ -198,16 +194,12 @@ def get_updated_value(user_input):
     Helper function to get the updated value based on user input.
     """
     if user_input == 1:
-        return pyip.inputStr('\n*New Name: ')
+        return pyip.inputStr('\n*New First Name: ')
     elif user_input == 2:
-        return pyip.inputStr('\n*New Last Name: ')
-    elif user_input == 3:
         return int(pyip.inputInt('\n*New Mobile Number: '))
+    elif user_input == 3:
+        return pyip.inputStr('\n*Country: ')
     elif user_input == 4:
-        return pyip.inputEmail('\n*New Email: ')
-    elif user_input == 5:
-        return pyip.inputStr('\n*New Address: ')
-    elif user_input == 6:
         return int(pyip.inputInt('\n*New Age: '))
     else:
         return None  # Handle other cases if necessary
@@ -219,12 +211,12 @@ def edit_search():
     contacts = SHEET.worksheet("contacts")
     
     print("\nHow would you like to search?\n\
-    \n1. By Name\n")
+    \n1. By First Name\n")
 
     while True:
         user_input = user_response("\nPlease enter a number from the above options: ", 1, 1)
         if user_input == 1:
-            name_to_search = pyip.inputStr("\nEnter the Name to search: ")
+            name_to_search = pyip.inputStr("\nEnter the First Name to search: ")
             rows_ids = search_by_name(name_to_search)
             break
         else:
@@ -239,13 +231,11 @@ next to the contact you would like to select: '))
             pass
 
     print("\
-    \n1. Name\n\
-2. Last Name\n\
-3. Mobile Number\n\
-4. Email\n\
-5. Address\n\
-6. Age\n")
-    user_input = user_response("\nWhich value would you like to change: ", 1, 6)
+    \n1. First Name\n\
+2. Mobile Number\n\
+3. Country\n\
+4. Age\n")
+    user_input = user_response("\nWhich value would you like to change: ", 1, 4)
     updated_value = get_updated_value(user_input)
     
     updated_contact_info = contacts.row_values(contact_row)
@@ -266,19 +256,19 @@ next to the contact you would like to select: '))
 
 
 
-def search_by_name(name):
+def search_by_name(first_name):
     """
-    Helper function to search for contacts by Name.
+    Helper function to search for contacts by First Name.
     """
     contacts = SHEET.worksheet("contacts")
     header = contacts.row_values(1)
-    index = header.index("Name") + 1
+    index = header.index("First Name") + 1
     
     column = contacts.col_values(index)
     rows_ids = []
 
     for i in range(len(column)):
-        if column[i] == name:
+        if column[i] == first_name:
             row_number = i + 1
             rows_ids.append(row_number)
 
