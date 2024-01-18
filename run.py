@@ -186,7 +186,7 @@ def get_updated_value(user_input):
     elif user_input == 2:
         return user_response('\n*New Mobile Number: ', 0, float('inf'))
     elif user_input == 3:
-        return input('\n*Country: ')
+        return input('\n*New Country: ')
     elif user_input == 4:
         return user_response('\n*New Age: ', 0, float('inf'))
     else:
