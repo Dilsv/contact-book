@@ -34,14 +34,14 @@ def user_response(message, min_value, max_value):
 def retrieve_records():
     """
     Function to collect all contacts 
-    in the contact details spreadsheet
+    in the contact details spreadsheet.
     """
     return contacts.get_all_records()
 
 
 def retrieve_all_contacts():
     """
-    Function to retrieve the full list of contacts
+    Function to retrieve the full list of contacts.
     """
     all_contacts = retrieve_records()
     print("\nNow retrieving all of your contacts...\n")
@@ -82,7 +82,7 @@ def another_task():
 
 def add_new_contact():
     """
-    Function to allow users to enter a new model's information.
+    Function to allow users to input new contact information.
     If the user tries to enter invalid characters, they will be alerted.
     """
     print("Please enter the following information for the new contact:")
@@ -140,7 +140,7 @@ def search_display(choice, search_by):
 
 def search(choice):
     """
-    Function to display search choices to user.
+    Function to show search choices to user.
     """
     search_by = input(f'\nEnter {choice}: ').capitalize()
     print("\nLoading Contacts...\n")
@@ -150,8 +150,8 @@ def search(choice):
 
 def search_contacts():
     """
-    Allows the user to search for specific models,
-    either by first name, last name, height, hair color, or gender.
+    Allows the user to search for specific contacts,
+    either by first name, mobile number, country, age.
     The search function is then called to display the results
     to the user.
     """
@@ -195,7 +195,7 @@ def get_updated_value(user_input):
 
 def edit_search():
     """
-    Function to allow the user to search contacts by Name.
+    Function to allow the user to search contacts by First Name.
     """
     print("\nHow would you like to search?\n\
     \n1. By First Name\n")
@@ -269,7 +269,8 @@ def search_by_name(first_name):
 def update_contact(contact_row, contact_column, updated_value):
     """
     Function to update the google spreadsheet
-    when the user updates a model's information
+    when the user updates a individual contact 
+    information.
     """
     contacts.update_cell(contact_row, contact_column, updated_value)
 
