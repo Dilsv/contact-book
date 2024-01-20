@@ -18,7 +18,7 @@ User Stories:
 - As a user, I want to update an existing contact's information if there has been a change.
 
 ### Structure
-![Flowchart of Python logic](assets/images/flowchart.png) -------------------
+![Flowchart of Python logic](assets/images/flowchart.png)
 
 As you can see from the flowchart above the logic has been based around the four key user options, retrieving all contact's, adding contact's & editing existing contact's, and searching for contacts by specific category. Each path will take the user back to the beginning once finished.
 
