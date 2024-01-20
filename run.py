@@ -87,7 +87,7 @@ def add_new_contact():
     """
     print("Please enter the following information for the new contact:")
     first_name = input('*First Name: ')
-    number = user_response('*Mobile Number: ', 0, float('inf'))
+    number = user_response('*Mobile Number: ', 11, float('inf'))
     country = input('*Country: ')
     age = user_response('*Age: ', 0, float('inf'))
 

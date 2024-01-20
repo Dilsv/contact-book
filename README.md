@@ -132,9 +132,9 @@ I also added a string or integer validation to ensure the user enters letters or
 
 ### Bugs and Fixes
 
-In addition to my own testing of the programme I passed my code through the [Pep8](http://pep8online.com/checkresult) online validator which passed through with 0 issues: ---------------------------------------------------------
+In addition to my own testing of the programme I passed my code through the [Pep8](http://pep8online.com/checkresult) online validator which passed through with 0 issues:
 
-![](assets/images/pep8.png) -----------------------------
+![](assets/images/validation.png)
 
 - When building this code, entering details with capitalised letters was an issue. I fixed this by removing code that made the entry case sensitive. 
 - When building this code, it only accepted numbers and single words. This is an action I intend to improve in my future projects.
@@ -211,14 +211,12 @@ In the Deploy tab:
 2. You can then choose to deploy the project manually or automatically, automatic deployment will generate a new application every time you push a change to Github, whereas manual deployment requires you to push the `Deploy Branch` button whenever you want a change made.
 3. Once you have chosen your deployment method and have clicked `Deploy Branch` your application will be built and you should see the below `View` button, click this to open your application:
 
-![](assets/images/heroku_deployed_image.png) ---------------------------------
+![](assets/images/heroku_deployed_image.png)
 
 ---
 ## Credits
 
-I used the following forum to help me design my main menu (https://python-forum.io/thread-22341.html). 
-
-I sourced my another_task function from Emma Wilson's Contact Book (https://github.com/Emmacharleswilson/model-search) and also used this as a guideline when creating my validation functions using pyinputplus, retrieve all contact's function and add new contact function. 
+I sourced my another_task function from Emma Wilson's Model Search (https://github.com/Emmacharleswilson/model-search) and also used this as a guideline when creating my validation functions using pyinputplus, retrieve all contact's function and add new contact function. 
 
 Along with this I also used (https://automatetheboringstuff.com/2e/chapter8/) to help me with my validation using pyinputplus. 
 
