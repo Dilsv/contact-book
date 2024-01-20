@@ -77,7 +77,7 @@ def another_task():
         menu()
     else:
         print("Program shutting down...\n")
-        raise SystemExit
+        os.exit()
 
 
 def add_new_contact():
@@ -156,7 +156,7 @@ def search_contacts():
     to the user.
     """
     print("\nHow would you like to search?\n\
-        \n1. By First Name\n\
+    \n1. By First Name\n\
     2. By Mobile Number\n\
     3. By Country\n\
     4. By Age\n")
