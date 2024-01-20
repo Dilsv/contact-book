@@ -116,28 +116,32 @@ This is one of the choices from the main menu, if the user selects option 4, the
 
 ### Input Validation
 
-As this programme relies heavily on users inputting information, validating these values is of the utmost importance at every step to ensure the information is viable.
-I chose to use the `pyinputplus` module as this offers built-in validation. The main use of this is when the users are presented with a numbered menu, they then must input their choice, I used the following function:  
-`def user_response(message, min_value, max_value):
-    input = pyip.inputInt(prompt=message, min=min_value, max=max_value)
-    return input`
+Given the significant reliance on user input for this program, it is crucial to validate these inputs thoroughly at each stage to guarantee the viability of the provided information. To achieve this, I opted for the pyinputplus module, leveraging its built-in validation features. Specifically, when users encounter a numbered menu and need to input their choice, I implemented the following function:
+'def user_response(message, min_value, max_value):
+    user_input = pyip.inputInt(prompt=message, min=min_value, max=max_value)
+    return user_input'
 
 I added the minimum and maximum value parameters to ensure that the user is only able to enter the numbers present in the menu, if they do not then the following error message is displayed:  
 
-![](assets/images/invalid_entry1.png)
+![](assets/images/invalid_entry1.png) --------------------------------
 
 I also added a string or integer validation to ensure the user enters letters or numbers in the appropriate fields. If they do not the following error messages are displayed. 
 
-![](assets/images/invalid_entry2.png)
-![](assets/images/invalid_entry3.png)
+![](assets/images/invalid_entry2.png) --------------------------------
+![](assets/images/invalid_entry3.png) --------------------------------
 
 ### Bugs and Fixes
 
-In addition to my own testing of the programme I passed my code through the [Pep8](http://pep8online.com/checkresult) online validator which passed through with 0 issues:
+In addition to my own testing of the programme I passed my code through the [Pep8](http://pep8online.com/checkresult) online validator which passed through with 0 issues: ---------------------------------------------------------
 
-![](assets/images/pep8.png)
+![](assets/images/pep8.png) -----------------------------
 
-I didn't experience any bugs while creating this application, however in the future I would like to include a delete option and improve the readability and functionality of my code with better uses of classes. 
+- When building this code, entering details with capitalised letters was an issue. I fixed this by removing code that made the entry case sensitive. 
+- When building this code, it only accepted numbers and single words. This is an action I intend to improve in my future projects.
+
+### Improvements
+- In my future projects, I intend on adding future features such as emails, addresses and last names.
+- The initial application for this contact book was personal, but upon running into bugs that could not be tackled, I built the code for a business to use due to the vagueness of information input.
 
 ---
 ## Deployment
@@ -205,14 +209,14 @@ In the Deploy tab:
 2. You can then choose to deploy the project manually or automatically, automatic deployment will generate a new application every time you push a change to Github, whereas manual deployment requires you to push the `Deploy Branch` button whenever you want a change made.
 3. Once you have chosen your deployment method and have clicked `Deploy Branch` your application will be built and you should see the below `View` button, click this to open your application:
 
-![](assets/images/heroku_deployed_image.png)
+![](assets/images/heroku_deployed_image.png) ---------------------------------
 
 ---
 ## Credits
 
 I used the following forum to help me design my main menu (https://python-forum.io/thread-22341.html). 
 
-I sourced my another_task function from Daisy Gunn's Contact Book (https://github.com/daisygunn/my-contact-book) and also used this as a guideline when creating my validation functions using pyinputplus, retrieve all model's function and add new model function. 
+I sourced my another_task function from Emma Wilson's Contact Book (https://github.com/Emmacharleswilson/model-search) and also used this as a guideline when creating my validation functions using pyinputplus, retrieve all contact's function and add new contact function. 
 
 Along with this I also used (https://automatetheboringstuff.com/2e/chapter8/) to help me with my validation using pyinputplus. 
 
@@ -221,6 +225,6 @@ All other code has been written by me.
 ---
 ## Acknowledgements
 
-I would like to thank my course mentor Sandeep Aggarwal for his support and guidance throughout the course of the project and my peer Daisy Gunn for their support & feedback.
+I would like to thank my course mentor Sandeep Aggarwal for his support and guidance throughout the course of the project and my peer Emma Wilson & Vasileios Tsimourdagkas for their support & feedback.
 
 ---
