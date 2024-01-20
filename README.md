@@ -95,12 +95,12 @@ I have used several technologies that have enabled this design to work:
 *'As a user, I want to be able to easily access all of my contacts at once.'*  
 This is one of the choices from the main menu, if the user selects option 1 all of the contacts are printed to the terminal.
 
-![](assets/images/receive_all.png) --------------------------
+![](assets/images/get-all.png)
 
 *'As a user, I want to add new contact information.'*  
 This is one of the choices from the main menu, if the user selects option 2, they are taken to add a new contact. The user is asked to input a value for First Name, Mobile Number, Country and Age.
 
-![](assets/images/add.png) -------------------------
+![](assets/images/add-new.png)
 
 *'As a user, I want to be able to retrieve a contacts information based upon their first name, mobile number, country and age.
 This is one of the choices from the main menu, if the user selects option 3, they are taken to search their models by either name/number/country/age. If there is a match found it is printed to the terminal. 
@@ -110,8 +110,8 @@ This is one of the choices from the main menu, if the user selects option 3, the
 *'As a user, I want to update an existing contact's information if there has been a change.'*  
 This is one of the choices from the main menu, if the user selects option 4, they are taken to search their contacts by first name. If there is a match found it is printed to the terminal and the user gets the option to edit a specific field. 
 
-![](assets/images/edit_search.png) ---------------------
-![](assets/images/edit_save.png) -----------------------
+![](assets/images/edit_contact.png)
+![](assets/images/edit_success.png)
 
 
 ### Input Validation
@@ -123,12 +123,12 @@ Given the significant reliance on user input for this program, it is crucial to 
 
 I added the minimum and maximum value parameters to ensure that the user is only able to enter the numbers present in the menu, if they do not then the following error message is displayed:  
 
-![](assets/images/invalid_entry1.png) --------------------------------
+![](assets/images/invalid_msg.png)
 
 I also added a string or integer validation to ensure the user enters letters or numbers in the appropriate fields. If they do not the following error messages are displayed. 
 
-![](assets/images/invalid_entry2.png) --------------------------------
-![](assets/images/invalid_entry3.png) --------------------------------
+![](assets/images/invalid_msg2.png)
+![](assets/images/invalid_msg3.png) --------------------------------
 
 ### Bugs and Fixes
 
@@ -138,6 +138,8 @@ In addition to my own testing of the programme I passed my code through the [Pep
 
 - When building this code, entering details with capitalised letters was an issue. I fixed this by removing code that made the entry case sensitive. 
 - When building this code, it only accepted numbers and single words. This is an action I intend to improve in my future projects.
+- When adding a new contact, it would accept a number as a country.
+- When running the code, the program will not show saved contacts but will save new contacts.
 
 ### Improvements
 - In my future projects, I intend on adding future features such as emails, addresses and last names.
