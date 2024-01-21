@@ -8,7 +8,7 @@ This is a command-line interface application designed for a user to access their
 
 ---
 ## UX
-To initiate the planning of this project, I commenced by focusing on the User Experience (UX) and crafting the program's logic in accordance with the user stories. Since this is a command-line application, there is no design aspect involved, as HTML and CSS have not been utilised. 
+To begin the planning phase of this project, I began by prioritizing the User Experience (UX) and formulating the program's logic based on the user stories. Given that this is a command-line application, there is no incorporation of design aspects, as HTML and CSS have not been employed.
 
 ### Strategy
 User Stories:
@@ -47,11 +47,11 @@ The features included in this programme are listed in the main menu and they can
 - If they do the contact will be saved, otherwise, they can go back to the main menu.
 
 ### Edit existing contacts:
-- From the main menu there is an option to Edit Existing Contacts, once the user has selected this they will first be taken to search for the Cotnact by first name.
+- From the main menu there is an option to Edit Existing Contacts, once the user has selected this they will first be taken to search for the Contact by first name.
 - The user will then be asked to enter '1' to continue the search.
-- If there's a match found, this will be shown on the terminal and the user will be asked to select which contact they would like to edit. 
+- If there's a match found, this will be shown on the terminal and the user will be asked to asked which contact they would like to edit by name, number, country or age.
 - The user will be asked which field they would like to edit and then be asked for the new information. 
-- The new information will be saved to the spreadsheet. 
+- The new information will be saved to the spreadsheet once it is confirmed on the terminal by the user.
 
 ---
 ## Technologies Used
@@ -80,7 +80,7 @@ I have used several technologies that have enabled this design to work:
 - [Lucid](https://lucid.app/documents#/dashboard)
     - Used to create the flowchart for the project.
 - [Grammarly](https://www.grammarly.com/)
-    - Used to fix the thousands of grammar errors across the project.
+    - Used to fix the grammar errors across the project.
 - [Google Sheets](https://www.google.co.uk/sheets/about/)
     - Used to store the 'Contacts' data used for the application.
 - [Pep8](http://pep8online.com/)
@@ -103,9 +103,9 @@ This is one of the choices from the main menu, if the user selects option 2, the
 ![](assets/images/add-new.png)
 
 *'As a user, I want to be able to retrieve a contacts information based upon their first name, mobile number, country and age.
-This is one of the choices from the main menu, if the user selects option 3, they are taken to search their models by either name/number/country/age. If there is a match found it is printed to the terminal. 
+This is one of the choices from the main menu, if the user selects option 3, they are taken to search their contacts by either name/number/country/age. If there is a match found it is printed to the terminal. 
 
-![](assets/images/search_by.png) -------------------------
+![](assets/images/search- contact.png)
 
 *'As a user, I want to update an existing contact's information if there has been a change.'*  
 This is one of the choices from the main menu, if the user selects option 4, they are taken to search their contacts by first name. If there is a match found it is printed to the terminal and the user gets the option to edit a specific field. 
@@ -125,10 +125,10 @@ I added the minimum and maximum value parameters to ensure that the user is only
 
 ![](assets/images/invalid_msg.png)
 
-I also added a string or integer validation to ensure the user enters letters or numbers in the appropriate fields. If they do not the following error messages are displayed. 
+ also incorporated validation for strings or integers to ensure that users input letters or numbers in the designated fields. If they fail to do so, the program displays the corresponding error messages. 
 
 ![](assets/images/invalid_msg2.png)
-![](assets/images/invalid_msg3.png) --------------------------------
+! [](assets/images/invalid-msg3.png)
 
 ### Bugs and Fixes
 
@@ -140,6 +140,7 @@ In addition to my own testing of the programme I passed my code through the [Pep
 - When building this code, it only accepted numbers and single words. This is an action I intend to improve in my future projects.
 - When adding a new contact, it would accept a number as a country.
 - When running the code, the program will not show saved contacts but will save new contacts.
+- When saving or editing contact information, the numbers do not save with a '0'. This might be related to the excel spreadsheet.
 
 ### Improvements
 - In my future projects, I intend on adding future features such as emails, addresses and last names.
@@ -225,6 +226,6 @@ All other code has been written by me.
 ---
 ## Acknowledgements
 
-I would like to thank my course mentor Sandeep Aggarwal for his support and guidance throughout the course of the project and my peer Emma Wilson & Vasileios Tsimourdagkas for their support & feedback.
+I would like to thank my course mentor Sandeep Aggarwal for his support and guidance throughout the course of the project and my peers Emma Wilson & Vasileios Tsimourdagkas for their support & feedback.
 
 ---

@@ -17,8 +17,9 @@ contacts = SHEET.worksheet('contacts')
 
 def user_response(message, min_value, max_value):
     """
-    Function used throughout the program
-    to validate users input from a list of choices.
+    A function employed across the program to
+    authenticate user input from a predefined
+    list of options.
     """
     while True:
         try:
@@ -33,8 +34,8 @@ def user_response(message, min_value, max_value):
 
 def retrieve_records():
     """
-    Function to collect all contacts 
-    in the contact details spreadsheet.
+    Function designed to gather all contacts from
+    the spreadsheet containing contact details.
     """
     return contacts.get_all_records()
 
@@ -52,9 +53,9 @@ def retrieve_all_contacts():
 
 def print_record(record):
     """
-    Function to loop through all records passed
-    as a parameter and print the details in a
-    list of key: values.
+    A function that iterates through all records
+    provided as a parameter, printing their
+    details in a key-value list format.
     """
     for key, value in record.items():
         print(f"{key}: {value}")
@@ -63,9 +64,9 @@ def print_record(record):
 
 def another_task():
     """
-    Function to prompt users for another task.
-    Returns True if the user wants to go back to the main menu,
-    and False if the program should shut down.
+    A function designed to ask users for another task,
+    returning True if the user wishes to return to the
+    main menu, and False if the program should be shut down.
     """
     print("\nWould you like to complete another task?\n")
     print("1. Yes, back to the main menu\n2. No, end program")
@@ -82,8 +83,9 @@ def another_task():
 
 def add_new_contact():
     """
-    Function to allow users to input new contact information.
-    If the user tries to enter invalid characters, they will be alerted.
+    Function enabling users to input new contact information,
+    with the provision to alert them if invalid characters 
+    are attempted.
     """
     print("Please enter the following information for the new contact:")
     first_name = input('*First Name: ')
@@ -109,9 +111,9 @@ def add_new_contact():
 
 def search_display(choice, search_by):
     """
-    Function to display search results.
-    Called in the search function and used
-    in the edit_search function.
+    Function that exhibits search results, invoked within
+    the search function and utilized in the edit_search
+    function.
     """
     header = contacts.row_values(1)
     index = header.index(choice) + 1
@@ -150,10 +152,10 @@ def search(choice):
 
 def search_contacts():
     """
-    Allows the user to search for specific contacts,
-    either by first name, mobile number, country, age.
-    The search function is then called to display the results
-    to the user.
+    Permits users to search for specific contacts based
+    on criteria such as first name, mobile number, country,
+    or age. The search function is subsequently invoked to
+    present the results to the user.
     """
     print("\nHow would you like to search?\n\
     \n1. By First Name\n\
@@ -268,17 +270,16 @@ def search_by_name(first_name):
 
 def update_contact(contact_row, contact_column, updated_value):
     """
-    Function to update the google spreadsheet
-    when the user updates a individual
-    contact information.
+    Function responsible for updating the Google Spreadsheet
+    when a user modifies individual contact information.
     """
     contacts.update_cell(contact_row, contact_column, updated_value)
 
 
 def show_menu():
     """
-    Function to display menu items to user.
-    This function is called from the menu function.
+    Function designed to present menu items to the user,
+    and it is invoked from the menu function.
     """
     print("\nWelcome to your Contact Book!\n")
     print("Main menu")
@@ -291,10 +292,10 @@ def show_menu():
 
 def menu():
     """
-    User selects which task they would like to do, uses their input and runs
-    elif loop to trigger the next process.
-    If an invalid choice is input then the program
-    will alert user and ask for another choice.
+    The user chooses a task, and their input is utilised to
+    initiate the next process through an "elif" loop.
+    If an invalid choice is entered, the program will notify 
+    the user and prompt them for an alternative selection.
     """
     while True:
         show_menu()
